@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Certificate Studio · Pharmacia Club DIU</title>
-  <link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="/static/portal.css">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="portal.css">
 </head>
 <body>
   <header class="topbar">
@@ -26,7 +26,7 @@
     </div>
     <div class="top-meta">
       <span class="pill" id="readyPill">Awaiting names</span>
-      <img src="/assets/diu-logo.png" alt="Daffodil International University">
+      <img src="assets/diu-logo.png" alt="Daffodil International University">
     </div>
   </header>
 
@@ -111,7 +111,7 @@
           <span class="num">2</span>
           <div>
             <h2>Recipients</h2>
-            <p>One name per line, or paste a column from Excel. Maximum {{ max_names }}.</p>
+            <p>One name per line, or paste a column from Excel. Maximum 100.</p>
           </div>
         </header>
         <label class="field">
@@ -119,7 +119,7 @@
           <textarea id="names" rows="8" spellcheck="false" placeholder="Nusrat Jahan&#10;Md. Rahim Uddin&#10;Fatima Akter"></textarea>
         </label>
         <div class="name-tools">
-          <strong id="count">0 / {{ max_names }}</strong>
+          <strong id="count">0 / 100</strong>
           <button type="button" class="textish" id="sampleBtn">Sample list</button>
           <label class="textish fileish">Upload<input id="file" type="file" accept=".txt,.csv,.tsv,text/plain" hidden></label>
           <button type="button" class="textish" id="clearNames">Clear</button>
@@ -150,7 +150,7 @@
           <div class="sig-card">
             <h3>Head of Department</h3>
             <div class="drop has-image" id="hodDrop">
-              <img id="hodPreview" src="/assets/signature.png" alt="Department head signature">
+              <img id="hodPreview" src="assets/signature.png" alt="Department head signature">
             </div>
             <div class="drop-actions">
               <label class="textish fileish">Replace<input id="hodFile" type="file" accept="image/png,image/jpeg,image/webp" hidden></label>
@@ -234,7 +234,12 @@
   </div>
   <div class="toast" id="toast" hidden role="status"></div>
   <iframe id="printFrame" class="print-frame" title="Print certificates"></iframe>
-  <script id="boot" type="application/json">{{ {"defaults": defaults, "maxNames": max_names}|tojson }}</script>
-  <script src="/static/portal.js"></script>
+  <script>window.CERT_STATIC = true;</script>
+  <script src="vendor/html2canvas.min.js"></script>
+  <script src="vendor/jspdf.umd.min.js"></script>
+  <script src="vendor/jszip.min.js"></script>
+  <script src="certificate.js"></script>
+  <script id="boot" type="application/json">{"defaults": {"heading": "CERTIFICATE", "subheading": "OF APPRECIATION", "presented": "THIS CERTIFICATE IS PROUDLY PRESENTED TO", "role": "Facilitator", "eventKind": "seminar", "eventCustom": "", "programme": "AI in Research", "organizer": "organized by the **Department of Pharmacy**,\n**Daffodil International University**,\nin collaboration with **Pharmacia Club DIU**.", "details": "Your expertise, insights and dedication have greatly enriched the knowledge and learning experience of all participants.", "closing": "Thank you for being a part of this meaningful initiative.", "recognition": "", "leftTitle": "Club Convenor", "leftOrg1": "Pharmacia Club DIU", "leftOrg2": "", "leftName": "", "rightTitle": "Head of the Department", "rightOrg1": "Department of Pharmacy", "rightOrg2": "Daffodil International University", "rightName": "", "showDate": false, "date": "2026-09-25", "showNumber": false, "idPrefix": "PCDIU-2026", "startNumber": 1, "watermark": true, "artwork": true}, "maxNames": 100}</script>
+  <script src="portal.js"></script>
 </body>
 </html>
