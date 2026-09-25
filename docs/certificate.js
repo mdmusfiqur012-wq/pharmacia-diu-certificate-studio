@@ -121,7 +121,7 @@ const CertificateStudio = (() => {
     if (cssCache) return cssCache;
     const [faces, extra] = await Promise.all([
       fetch("fonts/faces.css").then((r) => r.text()),
-      fetch("certificate.css").then((r) => r.text()),
+      fetch("certificate.css?v=6554611").then((r) => r.text()),
     ]);
     cssCache = `${faces.replaceAll("__PREFIX__", "fonts/")}\n${extra}`;
     return cssCache;
