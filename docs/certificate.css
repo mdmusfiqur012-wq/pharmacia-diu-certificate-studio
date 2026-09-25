@@ -61,14 +61,15 @@ html, body {
 
 .wm-bowl {
   position: absolute;
-  right: 16mm;
-  top: 46mm;
-  width: 36mm;
-  max-width: 36mm;
+  right: 4.6mm;
+  top: 58mm;
+  width: 58mm;
+  max-width: 58mm;
   height: auto;
   z-index: 0;
   opacity: 1;
   object-fit: contain;
+  object-position: right top;
   pointer-events: none;
 }
 
