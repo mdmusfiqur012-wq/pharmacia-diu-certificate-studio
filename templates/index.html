@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Certificate Studio · Pharmacia Club DIU</title>
+  <link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/static/portal.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="mark" aria-hidden="true">
+        <svg viewBox="0 0 86 96" width="34" height="38">
+          <ellipse cx="33" cy="88.2" rx="15.2" ry="5.1" fill="#F4F7F2"/>
+          <path fill="#F4F7F2" d="M27.2 64.5h11.6v17.2c-.4 1.6-2.6 2.6-5.8 2.6s-5.4-1-5.8-2.6z"/>
+          <path fill="#F4F7F2" fill-rule="evenodd" d="M5.5 39.5c0-12.2 10.2-20.2 27.5-20.2 17.2 0 27.4 8 27.4 20.2 0 13.6-10.6 22.6-27.4 22.6C16.1 62.1 5.5 53.1 5.5 39.5zm9.6-1.2c.8-7.4 7-12.2 17.9-12.2s17.1 4.8 17.9 12.2c-1.5 8.2-8.2 13.6-17.9 13.6s-16.4-5.4-17.9-13.6z"/>
+          <path fill="#F4F7F2" d="M20.2 27.2c-1.3-10.4 6.2-18.6 16.6-19.2 4.2-.2 7.2 2.2 6.2 6.1-1.1 4.2-6.4 5.2-9.4 8.8-2.1 2.5-4.6 5-8.2 5.6-2.2.4-4.6.1-5.2-1.3z"/>
+          <path fill="#3ECA73" d="M51.5 45.2c10.2-4.6 22.6.4 24.8 13.6-11.2 1.2-19.6-2.2-24.8-13.6z"/>
+        </svg>
+      </span>
+      <div>
+        <p class="eyebrow">Department of Pharmacy · Daffodil International University</p>
+        <h1>Pharmacia Club DIU <span>Certificate Studio</span></h1>
+      </div>
+    </div>
+    <div class="top-meta">
+      <span class="pill" id="readyPill">Awaiting names</span>
+      <img src="/assets/diu-logo.png" alt="Daffodil International University">
+    </div>
+  </header>
+
+  <main class="workspace">
+    <form class="panel" id="form" autocomplete="off">
+      <section>
+        <header class="sec-h">
+          <span class="num">1</span>
+          <div>
+            <h2>Programme</h2>
+            <p>Change the name and details. Every certificate updates at once.</p>
+          </div>
+        </header>
+        <div class="presets" role="group" aria-label="Wording presets">
+          <button type="button" class="chip on" data-preset="template">Template wording</button>
+          <button type="button" class="chip" data-preset="student">Student participation</button>
+        </div>
+        <label class="field">
+          <span>Programme name</span>
+          <input name="programme" maxlength="90" required placeholder="AI in Research">
+        </label>
+        <div class="split">
+          <label class="field">
+            <span>Recipient role</span>
+            <input name="role" maxlength="48" placeholder="Facilitator">
+          </label>
+          <label class="field">
+            <span>Event</span>
+            <select name="eventKind">
+              <option value="seminar">Seminar</option>
+              <option value="workshop">Workshop</option>
+              <option value="training programme">Training programme</option>
+              <option value="symposium">Symposium</option>
+              <option value="webinar">Webinar</option>
+              <option value="short course">Short course</option>
+              <option value="custom">Custom…</option>
+            </select>
+          </label>
+        </div>
+        <label class="field" id="customEvent" hidden>
+          <span>Custom event wording</span>
+          <input name="eventCustom" maxlength="48" placeholder="research seminar">
+        </label>
+        <label class="field">
+          <span>Details</span>
+          <textarea name="details" maxlength="480" rows="3"></textarea>
+          <small class="hint"><span data-count="details">0</span> / 480 · printed under the organiser line</small>
+        </label>
+        <label class="field">
+          <span>Organised by</span>
+          <textarea name="organizer" maxlength="420" rows="3"></textarea>
+          <small class="hint">Wrap a phrase in **double asterisks** to print it bold.</small>
+        </label>
+        <label class="field">
+          <span>Closing line</span>
+          <input name="closing" maxlength="180">
+        </label>
+        <details class="more">
+          <summary>Heading and recognition sentence</summary>
+          <label class="field">
+            <span>Certificate heading</span>
+            <input name="heading" maxlength="42">
+          </label>
+          <label class="field">
+            <span>Subheading</span>
+            <input name="subheading" maxlength="42">
+          </label>
+          <label class="field">
+            <span>Presented line</span>
+            <input name="presented" maxlength="90">
+          </label>
+          <label class="field">
+            <span>Custom recognition sentence</span>
+            <textarea name="recognition" maxlength="240" rows="2" placeholder="Leave blank to build it from the role and event."></textarea>
+            <small class="hint">Replaces “In recognition of your valuable contribution…” when filled.</small>
+          </label>
+        </details>
+      </section>
+
+      <section>
+        <header class="sec-h">
+          <span class="num">2</span>
+          <div>
+            <h2>Recipients</h2>
+            <p>One name per line, or paste a column from Excel. Maximum {{ max_names }}.</p>
+          </div>
+        </header>
+        <label class="field">
+          <span>Student names</span>
+          <textarea id="names" rows="8" spellcheck="false" placeholder="Nusrat Jahan&#10;Md. Rahim Uddin&#10;Fatima Akter"></textarea>
+        </label>
+        <div class="name-tools">
+          <strong id="count">0 / {{ max_names }}</strong>
+          <button type="button" class="textish" id="sampleBtn">Sample list</button>
+          <label class="textish fileish">Upload<input id="file" type="file" accept=".txt,.csv,.tsv,text/plain" hidden></label>
+          <button type="button" class="textish" id="clearNames">Clear</button>
+        </div>
+        <p class="warn" id="nameWarn" hidden></p>
+        <ol class="roster" id="roster"></ol>
+      </section>
+
+      <section>
+        <header class="sec-h">
+          <span class="num">3</span>
+          <div>
+            <h2>Signatures &amp; finish</h2>
+            <p>The department head signature is placed on every certificate.</p>
+          </div>
+        </header>
+        <div class="sig-grid">
+          <div class="sig-card">
+            <h3>Club Convenor</h3>
+            <div class="drop" id="convDrop">
+              <span class="drop-empty">Optional signature</span>
+            </div>
+            <div class="drop-actions">
+              <label class="textish fileish">Upload<input id="convFile" type="file" accept="image/png,image/jpeg,image/webp" hidden></label>
+              <button type="button" class="textish" id="convClear" hidden>Remove</button>
+            </div>
+          </div>
+          <div class="sig-card">
+            <h3>Head of Department</h3>
+            <div class="drop has-image" id="hodDrop">
+              <img id="hodPreview" src="/assets/signature.png" alt="Department head signature">
+            </div>
+            <div class="drop-actions">
+              <label class="textish fileish">Replace<input id="hodFile" type="file" accept="image/png,image/jpeg,image/webp" hidden></label>
+              <button type="button" class="textish" id="hodRestore" hidden>Use uploaded</button>
+              <button type="button" class="textish" id="hodClear">Remove</button>
+            </div>
+          </div>
+        </div>
+        <details class="more">
+          <summary>Edit signatory titles</summary>
+          <div class="split">
+            <label class="field"><span>Left title</span><input name="leftTitle" maxlength="52"></label>
+            <label class="field"><span>Right title</span><input name="rightTitle" maxlength="52"></label>
+          </div>
+          <div class="split">
+            <label class="field"><span>Left line 2</span><input name="leftOrg1" maxlength="64"></label>
+            <label class="field"><span>Right line 2</span><input name="rightOrg1" maxlength="64"></label>
+          </div>
+          <div class="split">
+            <label class="field"><span>Left line 3</span><input name="leftOrg2" maxlength="64" placeholder="Optional"></label>
+            <label class="field"><span>Right line 3</span><input name="rightOrg2" maxlength="64"></label>
+          </div>
+          <div class="split">
+            <label class="field"><span>Left printed name</span><input name="leftName" maxlength="64" placeholder="Optional"></label>
+            <label class="field"><span>Right printed name</span><input name="rightName" maxlength="64" placeholder="Optional"></label>
+          </div>
+        </details>
+        <div class="toggles">
+          <label class="check"><input type="checkbox" name="watermark"> Background watermark — Pharmacia Club mark and DIU logo</label>
+          <label class="check"><input type="checkbox" name="artwork"> Template corner artwork</label>
+          <label class="check"><input type="checkbox" name="showDate"> Print a date</label>
+          <label class="check"><input type="checkbox" name="showNumber"> Print certificate numbers</label>
+        </div>
+        <div class="split" id="dateRow" hidden>
+          <label class="field"><span>Date</span><input type="date" name="date"></label>
+        </div>
+        <div class="split" id="numRow" hidden>
+          <label class="field"><span>Number prefix</span><input name="idPrefix" maxlength="24"></label>
+          <label class="field"><span>Start at</span><input name="startNumber" type="number" min="1" max="900"></label>
+        </div>
+      </section>
+
+      <div class="actions">
+        <button type="button" class="btn primary" id="btnAll" disabled>Download certificates</button>
+        <div class="btn-row">
+          <button type="button" class="btn" id="btnZip" disabled>Individual PDFs</button>
+          <button type="button" class="btn" id="btnOne" disabled>This one</button>
+          <button type="button" class="btn ghost" id="btnPrint" disabled>Print</button>
+        </div>
+        <p class="fine">A4 landscape. The signature, watermark, and programme text are applied automatically.</p>
+        <p class="saved" id="saved" hidden>Draft saved on this browser</p>
+      </div>
+    </form>
+
+    <section class="stage-wrap">
+      <div class="stage-bar">
+        <div class="pager">
+          <button type="button" id="prev" aria-label="Previous certificate" disabled>‹</button>
+          <div>
+            <strong id="pos">Preview</strong>
+            <span id="posName">Recipient name</span>
+          </div>
+          <button type="button" id="next" aria-label="Next certificate" disabled>›</button>
+        </div>
+        <p class="live">Live preview · changes apply to the whole batch</p>
+      </div>
+      <div class="stage" id="stage">
+        <div class="scaler" id="scaler">
+          <iframe id="preview" title="Certificate preview" scrolling="no"></iframe>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="overlay" id="overlay" hidden>
+    <div class="modal">
+      <div class="spinner" aria-hidden="true"></div>
+      <h3 id="overlayTitle">Composing certificates</h3>
+      <p id="overlayText">Keeping the template, watermark, and signature aligned.</p>
+    </div>
+  </div>
+  <div class="toast" id="toast" hidden role="status"></div>
+  <iframe id="printFrame" class="print-frame" title="Print certificates"></iframe>
+  <script id="boot" type="application/json">{{ {"defaults": defaults, "maxNames": max_names}|tojson }}</script>
+  <script src="/static/portal.js"></script>
+</body>
+</html>

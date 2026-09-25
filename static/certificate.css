@@ -1,0 +1,405 @@
+@page {
+  size: 297mm 210mm;
+  margin: 0;
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #f7fbf8;
+}
+
+.sheet {
+  --navy: #123f78;
+  --navy-deep: #0f3e72;
+  --ink: #2f3e4e;
+  --muted: #5c6d7e;
+  --green: #1b7a40;
+  --rule: #1d4e86;
+  position: relative;
+  width: 297mm;
+  height: 209.85mm;
+  overflow: hidden;
+  background: #f7fbf8;
+  page-break-after: always;
+  break-after: page;
+}
+
+.sheet:last-child {
+  page-break-after: auto;
+  break-after: auto;
+}
+
+.frame {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 297mm;
+  height: 210mm;
+  z-index: 5;
+}
+
+.wm-diu {
+  position: absolute;
+  left: 50%;
+  top: 148mm;
+  width: 74mm;
+  transform: translateX(-50%);
+  opacity: 0.88;
+  z-index: 0;
+}
+
+.wm-bowl {
+  position: absolute;
+  right: 20mm;
+  top: 55mm;
+  width: 44mm;
+  height: auto;
+  z-index: 0;
+  opacity: 0.88;
+}
+
+.brain {
+  position: absolute;
+  left: 7mm;
+  bottom: 12mm;
+  width: 26mm;
+  height: 24mm;
+  z-index: 1;
+  opacity: 0.8;
+}
+
+.sheet.no-wm .wm-diu,
+.sheet.no-wm .wm-bowl {
+  display: none;
+}
+
+.sheet.no-art .brain {
+  display: none;
+}
+
+.brand {
+  position: absolute;
+  top: 8.6mm;
+  left: 15mm;
+  right: 14mm;
+  height: 16mm;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 2;
+}
+
+.brand-left {
+  display: flex;
+  align-items: center;
+  gap: 3.1mm;
+  flex: 0 0 auto;
+}
+
+.mark {
+  width: 12.2mm;
+  height: auto;
+  display: block;
+}
+
+.club-copy { flex: 0 0 auto; }
+
+.vbar {
+  width: 0.35mm;
+  height: 10.5mm;
+  background: #0f3e72;
+}
+
+.club-name {
+  font-family: Montserrat, "Noto Sans Bengali", sans-serif;
+  font-weight: 700;
+  font-size: 11.2pt;
+  letter-spacing: 0.03em;
+  color: #0f3e72;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.club-name .g {
+  color: #1a8a46;
+}
+
+.tagline {
+  margin-top: 1.45mm;
+  font-family: Montserrat, sans-serif;
+  font-weight: 500;
+  font-size: 5.4pt;
+  letter-spacing: 0.16em;
+  color: #7d8c9a;
+  white-space: nowrap;
+}
+
+.diu-logo {
+  height: 14.6mm;
+  width: auto;
+  display: block;
+  flex: 0 0 auto;
+}
+
+.title-block {
+  position: absolute;
+  top: 27.2mm;
+  left: 18mm;
+  right: 18mm;
+  text-align: center;
+  z-index: 2;
+}
+
+.heading {
+  margin: 0;
+  font-family: "Playfair Display", "Noto Sans Bengali", serif;
+  font-weight: 700;
+  font-size: 34pt;
+  letter-spacing: 0.16em;
+  color: #163e78;
+  line-height: 0.92;
+  text-transform: uppercase;
+}
+
+.subheading {
+  margin: 2.4mm 0 0;
+  font-family: "Playfair Display", "Noto Sans Bengali", serif;
+  font-weight: 500;
+  font-size: 12.4pt;
+  letter-spacing: 0.42em;
+  color: #163e78;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+.leaf-rule {
+  width: 74mm;
+  height: 7mm;
+  margin: 3.2mm auto 0;
+  display: block;
+}
+
+.presented {
+  position: absolute;
+  top: 59.5mm;
+  left: 16mm;
+  right: 16mm;
+  margin: 0;
+  text-align: center;
+  font-family: Montserrat, sans-serif;
+  font-weight: 500;
+  font-size: 7.15pt;
+  letter-spacing: 0.28em;
+  color: #5d7082;
+  text-transform: uppercase;
+  z-index: 2;
+}
+
+.name-rule {
+  position: absolute;
+  top: 67.6mm;
+  left: 58mm;
+  right: 58mm;
+  height: 0;
+  border-top: 0.32mm solid #1d4e86;
+  z-index: 2;
+}
+
+.name-block {
+  position: absolute;
+  top: 71.2mm;
+  left: 24mm;
+  right: 24mm;
+  text-align: center;
+  z-index: 2;
+}
+
+.recipient {
+  margin: 0;
+  font-family: "Playfair Display", "Noto Sans Bengali", serif;
+  font-weight: 600;
+  font-size: 26pt;
+  line-height: 1.05;
+  color: #143c74;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+
+.recipient.long { font-size: 20pt; }
+.recipient.xlong { font-size: 16pt; letter-spacing: 0; }
+.recipient.xxlong {
+  font-size: 13.5pt;
+  white-space: normal;
+  letter-spacing: 0;
+}
+
+.recipient.placeholder {
+  color: #c3ced6;
+  font-style: italic;
+  font-weight: 500;
+}
+
+.date-line {
+  margin: 1.6mm 0 0;
+  font-family: Montserrat, sans-serif;
+  font-weight: 500;
+  font-size: 7.2pt;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #6d7e8e;
+}
+
+.body {
+  position: absolute;
+  top: 90.5mm;
+  left: 38mm;
+  right: 38mm;
+  text-align: center;
+  z-index: 2;
+  color: #3c4d5d;
+  font-family: "Libre Baskerville", "Noto Sans Bengali", serif;
+  font-size: 9.15pt;
+  line-height: 1.48;
+  max-height: 64mm;
+  overflow: hidden;
+}
+
+.lead {
+  margin: 0;
+}
+
+.lead strong,
+.org strong,
+.details strong {
+  font-weight: 700;
+  color: #1c3348;
+}
+
+.programme {
+  margin: 1.5mm 0 1.3mm;
+  font-family: "Libre Baskerville", "Noto Sans Bengali", serif;
+  font-weight: 700;
+  font-size: 13.6pt;
+  line-height: 1.25;
+  color: #163e78;
+}
+
+.programme.long { font-size: 11.6pt; }
+.programme.xlong { font-size: 10.2pt; }
+
+.org {
+  margin: 0;
+  font-size: 8.85pt;
+  line-height: 1.48;
+  color: #455666;
+}
+
+.details {
+  margin: 3.3mm auto 0;
+  max-width: 158mm;
+  font-size: 9.05pt;
+  line-height: 1.5;
+  color: #3c4d5d;
+}
+
+.thanks {
+  margin: 3.4mm 0 0;
+  font-family: "Great Vibes", "Noto Sans Bengali", cursive;
+  font-weight: 400;
+  font-size: 19.5pt;
+  line-height: 1.15;
+  color: #1c7a40;
+}
+
+.body.tight { font-size: 8.45pt; }
+.body.tight .programme { font-size: 12pt; }
+.body.tight .thanks { font-size: 17pt; margin-top: 2.4mm; }
+.body.tight .details { margin-top: 2.4mm; }
+.body.dense { font-size: 7.9pt; }
+.body.dense .programme { font-size: 10.6pt; }
+.body.dense .org { font-size: 7.7pt; }
+.body.dense .thanks { font-size: 15.5pt; margin-top: 1.8mm; }
+.body.dense .details { margin-top: 1.8mm; font-size: 7.9pt; }
+
+.signs {
+  position: absolute;
+  left: 32mm;
+  right: 24mm;
+  bottom: 13mm;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.sign {
+  width: 78mm;
+  text-align: center;
+}
+
+.sig-slot {
+  height: 15mm;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.sig-slot img {
+  max-height: 14.5mm;
+  max-width: 52mm;
+  width: auto;
+  height: auto;
+  display: block;
+}
+
+.rule {
+  height: 0;
+  border-top: 0.32mm solid #1d4e86;
+  margin: 0 8mm 1.5mm;
+}
+
+.sig-name {
+  font-family: "Libre Baskerville", "Noto Sans Bengali", serif;
+  font-style: italic;
+  font-size: 8pt;
+  color: #24384c;
+  line-height: 1.2;
+  margin-bottom: 0.4mm;
+}
+
+.sig-title {
+  font-family: Montserrat, "Noto Sans Bengali", sans-serif;
+  font-weight: 700;
+  font-size: 8pt;
+  color: #1b2c3c;
+  line-height: 1.25;
+}
+
+.sig-org {
+  font-family: "Libre Baskerville", "Noto Sans Bengali", serif;
+  font-size: 7.35pt;
+  color: #5a6976;
+  line-height: 1.35;
+}
+
+.certno {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 6.1mm;
+  text-align: center;
+  z-index: 2;
+  font-family: Montserrat, sans-serif;
+  font-weight: 500;
+  font-size: 6.3pt;
+  letter-spacing: 0.2em;
+  color: #8b9bab;
+  text-transform: uppercase;
+}
