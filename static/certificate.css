@@ -93,14 +93,14 @@ html, body {
 
 .brand {
   position: absolute;
-  top: 8.6mm;
-  left: 15mm;
-  right: 14mm;
-  height: 16mm;
+  top: 11.4mm;
+  left: 21mm;
+  right: 16mm;
+  height: 13.6mm;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  z-index: 2;
+  z-index: 6;
 }
 
 .brand-left {
@@ -111,7 +111,7 @@ html, body {
 }
 
 .mark {
-  width: 12.2mm;
+  width: 10.4mm;
   height: auto;
   display: block;
 }
